@@ -1,0 +1,47 @@
+<div class="conatiner">
+    <div class="row">
+        <div class="col-md-12">
+
+            <form #f="ngForm" (ngSubmit)="submit(f)">       
+                <div class="formElements">
+                    <div class="name">
+                        Name: <input type="text" class="form-control" style="width: 350px;" placeholder="Name" ngModel
+                            name="name">
+                    </div>
+
+                    <div class="Card Number">
+                        Card Number: <input type="text" class="form-control" ngModel name="cardNumber"
+                            style="width: 350px;" placeholder="xxxx xxxx xxxx xxxx" appCardSpacing
+                            (keyup)="checkLength($event)">
+                    </div>
+                    <div class="Expiration">
+                        Expiration (MM/YY): <input type="text" class="form-control" style="width: 350px;"
+                            placeholder="Expiry Date" appExpiryDate maxlength="6" ngModel name="expiryDate" (blur)="expiryValidation($event)">
+                    </div>  
+
+                    <div class="securityCode">
+                        Security Code: <input type="text" class="form-control" style="width: 350px;"
+                            placeholder="SecurityCode" maxlength="3" ngModel name="securityCode">
+                    </div><br>
+
+                    <button class="btn btn-success" type="submit">Submit</button>&nbsp;
+                    <button class="btn btn-warning" type="reset">Reset</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" *ngIf="showFormDetial">
+            <h1>Card Detial</h1>
+            <div class="detial" *ngFor="let array of formDetialArray">
+                <h6>Name: {{array.name}}</h6>
+                <h6>Card Number: {{array.cardNumber}}</h6>
+                <h6>Expiry Date: {{array.expiryDate}}</h6>
+                <h6>Security Code: {{array.securityCode}}</h6>
+            </div>
+        </div>
+    </div>
+</div>
